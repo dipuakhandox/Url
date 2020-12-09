@@ -41,14 +41,16 @@ app.use("/:id", async (req, res, next) => {
 
 const schema = yup.object().shape({
   url: yup.string().required().url().trim(),
-  slug: yup.string().trim().matches("/^[a-z0-9_]+(-[a-z0-9_]+)*$/i")
+  slug: yup.string().trim().matches(/^[a-z0-9_]+(-[a-z0-9_]+)*$/i),
 })
 
 app.post("/shorten", async (req, res, next) => {
-  const valid_url = schema.isValid({
+  const valid_url = await schema.isValid({
     url: req.body["url"],
     slug: req.body["slug"]
   });
+  next();
+  console.log(valid_url);
   if (valid_url) {
       const querry_to_post = {
         url: req.body["url"],
@@ -58,9 +60,9 @@ app.post("/shorten", async (req, res, next) => {
       console.log(`New slug ("${querry_to_post["slug"]}") created for ${querry_to_post["url"]}.`);
       next();
       return res.status(200);
-    } else {
+  } else {
       return res.status(400);
-    }
+  }
 });
 
 app.use(express.static("public"));
