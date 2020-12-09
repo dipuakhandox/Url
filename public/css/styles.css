@@ -1,0 +1,14 @@
+
+body {
+    background-color: #323131;
+    color: #C9C9C9;
+}
+
+a:link {
+    color: #9A33B8;
+    color: #C037E7;
+}
+
+a:vistied {
+    color: #C754E8;
+}
