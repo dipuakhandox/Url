@@ -1,10 +1,20 @@
-html
-    head
-        title=title
-    body
-        h1(class="header") kek.cx - Shorten your URLs Cx
-        br
-        input(type="text")
-        input(type="text")
-        br
-        button(type="submit") Shorten Cx
+doctype html
+head
+  style
+    include ../public/css/styles.css
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Baloo+2")
+  title=title
+div.main-content
+  div.header
+    h1.header-text Shortify
+  div.form-area
+    div.input-area
+      h3.label(style='margin-top: 0px;') Long URL:
+      input#url-input(type='text' placeholder='https://example.com/soooo-long')
+      h3.label(style='margin-top: 12px;') Slug (optional):
+      div.input-group
+        div.input-group-icon s.gonda.dev/
+        div.input-group-area
+          input#slug-input(type='text' placeholder='so-short')
+      div.submit-container
+        button(type='submit') Make it short!
