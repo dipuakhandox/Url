@@ -9,6 +9,7 @@ require("dotenv").config();
 
 const db = monk(process.env.MONGO_URI);
 const port = process.env.PORT || 3000;
+const main_url = process.env.WEBSITE_DOMAIN
 const urls = db.get("shortened_urls");
 
 db.then(() => {
@@ -17,25 +18,31 @@ db.then(() => {
 
 app.set("view engine", "pug");
 app.use(express.json());
+app.use("/", express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const kaka = "kek.cx";
+  res.render("index", {title: `Shortify | ${kaka}`, website: main_url});
 });
 
-app.use("/:id", async (req, res, next) => {
+app.use("/:id?", async (req, res, next) => {
   var querry = {
     slug: req.params.id,
   };
+  if (req.params.id == "shorten") {
+    next();
+  }
   try {
     var url = await urls.findOne(querry);
     next();
-    console.log(url.url);
-    if (url) {
+    if (url !== null) {
+      console.log(url.url);
       return res.redirect(302, url.url);
+    } else {
+      res.sendStatus(404);
     }
-    return res.status(404);
   } catch (error) {
-    return res.status(404);
+    console.log(`id shit error ${error}`);  // HTTP_HEADERS_SENT Error
   }
 });
 
@@ -51,21 +58,23 @@ app.post("/shorten", async (req, res, next) => {
   });
   next();
   console.log(valid_url);
-  if (valid_url) {
-      const querry_to_post = {
-        url: req.body["url"],
-        slug: req.body["slug"]
-      };
-      await urls.insert(querry_to_post);
-      console.log(`New slug ("${querry_to_post["slug"]}") created for ${querry_to_post["url"]}.`);
-      next();
-      return res.status(200);
-  } else {
-      return res.status(400);
+  const querry_to_check = { slug: req.body["slug"] };
+  try {
+    if (valid_url && await urls.findOne(querry_to_check) == null) {
+        const querry_to_post = {
+          url: req.body["url"],
+          slug: req.body["slug"]
+        };
+        await urls.insert(querry_to_post);
+        console.log(`New slug ("${querry_to_post["slug"]}") created for ${querry_to_post["url"]}.`);
+        return res.json(querry_to_post);
+    } else {
+        return res.status(400).end("Slug isn't valid or already exists.");
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
-
-app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
