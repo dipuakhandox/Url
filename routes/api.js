@@ -57,4 +57,30 @@ router.post(
   }
 );
 
+router
+  .route("/total")
+  // Checks all the shortened URLs and returns the total number of them.
+  .get(async (req, res, next) => {
+    try {
+      const total_num = await req.db.count();
+      return res.json({ total: total_num });
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  // Checks the number of a specific URL.
+  .post(async (req, res, next) => {
+    try {
+      const url_toCount = req.body["url"];
+      if (url_toCount) {
+        const total_num = await req.db.count({ url: url_toCount });
+        return res.json({ total: total_num });
+      } else {
+        return res.status(400).send("Include a URL in your request.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
 module.exports = router;
