@@ -83,4 +83,23 @@ router
     }
   });
 
+router.post("/shortened", async (req, res, next) => {
+  try {
+    const url_toCount = req.body["url"];
+    if (url_toCount) {
+      const slugs = [];
+      await req.db
+        .find({ url: url_toCount })
+        .each((slug, { close, pause, resume }) => {
+          slugs.push(slug.slug);
+        });
+      return res.json({ slugs });
+    } else {
+      return res.status(400).send("Include a URL in your request.");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
