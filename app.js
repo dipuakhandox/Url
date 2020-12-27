@@ -1,6 +1,7 @@
 const express = require("express");
 const monk = require("monk");
 const path = require("path");
+const helmet = require("helmet");
 const api = require("./routes/api");
 const logger = require("./middlewares/logger");
 const error_handler = require("./middlewares/error_handler");
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
+app.use(helmet());
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/api/", api);
 
