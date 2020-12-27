@@ -2,6 +2,7 @@ const express = require("express");
 const monk = require("monk");
 const path = require("path");
 const api = require("./routes/api");
+const logger = require("./middlewares/logger");
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use("/:id?", async (req, res, next) => {
       next();
       if (url !== null) {
         console.log(url.url);
+        logger.log({level: "info", message: `Requested URL (${url.url}) from slug: ${querry.slug}`});
         return res.redirect(302, url.url);
       } else {
         res.sendStatus(404);

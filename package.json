@@ -4,7 +4,7 @@
   "description": "✂  A basic URL shortener under the 'gonda.dev' domain",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "export NODE_ENV=development&& npx nodemon -L app.js",
     "start": "node app.js"
   },
   "keywords": [
@@ -20,6 +20,7 @@
     "monk": "^7.3.2",
     "nodemon": "^2.0.6",
     "pug": "^3.0.0",
+    "winston": "^3.3.3",
     "yup": "^0.32.8"
   }
 }
