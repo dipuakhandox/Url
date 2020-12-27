@@ -49,7 +49,7 @@ var slug_insert = async function (req, res, next) {
       return res.status(400).end("Slug isn't valid or already exists.");
     }
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
@@ -70,7 +70,7 @@ router
       const total_num = await req.db.count();
       return res.json({ total: total_num });
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   })
   // Checks the number of a specific URL.
@@ -84,7 +84,7 @@ router
         return res.status(400).send("Include a URL in your request.");
       }
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   });
 
@@ -103,7 +103,7 @@ router.post("/shortened", async (req, res, next) => {
       return res.status(400).send("Include a URL in your request.");
     }
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 

@@ -3,6 +3,7 @@ const monk = require("monk");
 const path = require("path");
 const api = require("./routes/api");
 const logger = require("./middlewares/logger");
+const error_handler = require("./middlewares/error_handler");
 
 const app = express();
 
@@ -49,9 +50,13 @@ app.use("/:id?", async (req, res, next) => {
         res.sendStatus(404);
       }
     } catch (error) {
-      console.log(`id shit error ${error}`);
+      next(error);
     }
   }
+});
+
+app.use((error, req, res, next) => {
+  error_handler.generic(error, req, res, next);
 });
 
 app.listen(port, () => {
