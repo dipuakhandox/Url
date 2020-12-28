@@ -14,8 +14,8 @@ const schema = yup.object().shape({
 
 var slug_validator = async function (req, res, next) {
   const valid_url = await schema.isValid({
-    url: req.body["url"],
-    slug: req.body["slug"],
+    url: req.body.url,
+    slug: req.body.slug,
   });
   req.valid_url = valid_url;
   next();
@@ -24,16 +24,17 @@ var slug_validator = async function (req, res, next) {
 var slug_insert = async function (req, res, next) {
   const urls = req.db;
   console.log(req.valid_url);
+  console.log(req.body.url);
   try {
     if (
       req.valid_url &&
       (await urls.findOne({
-        slug: req.body["slug"],
+        slug: req.body.slug,
       })) == null
     ) {
       const querry_to_post = {
-        url: req.body["url"],
-        slug: req.body["slug"],
+        url: req.body.url,
+        slug: req.body.slug,
       };
       await urls.insert(querry_to_post);
       console.log(

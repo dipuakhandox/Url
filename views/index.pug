@@ -8,13 +8,14 @@ div.main-content
   div.header
     h1.header-text Shortify
   div.form-area
-    div.input-area
-      h3.label(style='margin-top: 0px;') Long URL:
-      input#url-input(type='text' placeholder='https://example.com/soooo-long')
-      h3.label(style='margin-top: 12px;') Slug (optional):
-      div.input-group
-        div.input-group-icon=website
-        div.input-group-area
-          input#slug-input(type='text' placeholder='so-short')
-      div.submit-container
-        button(type='submit') Make it short!
+    form(action="/api/shorten", method="POST")
+      div.input-area
+        h3.label(style='margin-top: 0px;') Long URL:
+        input#url-input(type='text' name='url' placeholder='https://example.com/soooo-long')
+        h3.label(style='margin-top: 12px;') Slug (optional):
+        div.input-group
+          div.input-group-icon=website
+          div.input-group-area
+            input#slug-input(type='text' name='slug' placeholder='so-short')
+        div.submit-container
+          button(type='submit') Make it short!
