@@ -17,7 +17,10 @@ function generic(error, req, res, next) {
         stack: error.stack,
       });
     } else {
-      return res.sendStatus(500);
+      return res.render("error.pug", {
+        error_code: error.status,
+        error_message: error.message,
+      });
     }
   } catch (err) {
     console.error(err);
@@ -28,4 +31,11 @@ function generic(error, req, res, next) {
   }
 }
 
-module.exports = generic;
+function not_found(req, res, next) {
+  return res.status(404).render("error.pug", {
+    error_code: 404,
+    error_message: "Page not found",
+  });
+}
+
+module.exports = { generic, not_found };

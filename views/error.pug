@@ -1,0 +1,12 @@
+doctype html
+head
+    title Shortify - Error
+    style
+        include ../public/css/styles.css
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Baloo+2")
+body
+    div.main-content
+        div.error-area
+            h1.error-header Error: #{ error_code }
+            hr
+            h2.error-message=error_message

@@ -52,7 +52,7 @@ app.use("/:id?", async (req, res, next) => {
         logger.log({level: "info", message: `Requested URL (${url.url}) from slug: ${querry.slug}`});
         return res.redirect(302, url.url);
       } else {
-        res.sendStatus(404);
+        error_handler.not_found(req, res, next);
       }
     } catch (error) {
       next(error);

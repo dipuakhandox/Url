@@ -124,3 +124,63 @@ input {
     border-style: solid;
     padding-left: 5px;
 }
+
+.notifications {
+    width: 40%;
+    margin: auto;
+}
+
+.notification-text {
+    font-size: 1.2rem;
+}
+
+.notification-success {
+    background-color: #2fbf71;
+    border-left-width: 10px;
+    border-left-style: solid;
+    border-color: #249456;
+    padding-left: 20px;
+}
+
+.notification-error {
+    background-color: #ff234f;
+    border-left-width: 10px;
+    border-left-style: solid;
+    border-color: #cc0028;
+    padding-left: 20px;
+}
+
+hr {
+    color: var(--text-color);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.error-header {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.error-message {
+    text-align: center;
+}
+
+.error-area {
+    border-top-width: 10px;
+    width: 40%;
+    background-color: #79523e;
+    margin: auto;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-color: #6c4937;
+    border-bottom-width: 10px;
+    border-bottom-style: solid;
+    border-right-width: 10px;
+    border-right-style: solid;
+    border-left-width: 10px;
+    border-left-style: solid;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border-top-style: solid;
+}
