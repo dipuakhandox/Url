@@ -1,186 +1,196 @@
 @import url(https://fonts.googleapis.com/css?family=Baloo+2);
 
 :root {
-    --main-bg-color:  #564138;
-    --text-color: #eff1f3;
+  --main-color: #2fbf71;
+  --main-color-secondary: #249456;
+  --main-bg-color: #564138;
+  --text-color: #eff1f3;
+  --window-bg-color: #79523e;
+  --window-border-color: #6c4937;
+  --input-bg-color: #b87551;
+  --input-border-color: #996448;
 }
 
 body {
-    background-color: var(--main-bg-color);
-    color: var(--text-color);
-    font-family: 'Baloo 2', sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-family: "Baloo 2", sans-serif;
 }
 
 input {
-    color: var(--text-color);
-    background-color: #b87551;
+  color: var(--text-color);
+  background-color: var(--input-bg-color);
 }
 
 .main-content {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
-.form-area{
-    width: 40%;
-    background-color: #79523e;
-    margin: auto;
-    padding-left: 1%;
-    padding-right: 1%;
-    border-color: #6c4937;
-    border-bottom-width: 10px;
-    border-bottom-style: solid;
-    border-right-width: 10px;
-    border-right-style: solid;
-    border-left-width: 10px;
-    border-left-style: solid;
-    padding-top: 10px;
-    padding-bottom: 12px;
+.form-area {
+  width: 40%;
+  background-color: var(--window-bg-color);
+  margin: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-color: var(--window-border-color);
+  border-bottom-width: 10px;
+  border-bottom-style: solid;
+  border-right-width: 10px;
+  border-right-style: solid;
+  border-left-width: 10px;
+  border-left-style: solid;
+  padding-top: 10px;
+  padding-bottom: 12px;
 }
 
 .header {
-    width: 40%;
-    margin: auto;
-    text-align: center;
-    background-color: #2fbf71;
-    border-right-width: 10px;
-    border-right-style: solid;
-    border-top-width: 10px;
-    border-top-style: solid;
-    border-left-width: 10px;
-    border-left-style: solid;
-    border-color:#249456;
-    padding-left: 1%;
-    padding-right: 1%;
+  width: 40%;
+  margin: auto;
+  text-align: center;
+  background-color: var(--main-color);
+  border-right-width: 10px;
+  border-right-style: solid;
+  border-top-width: 10px;
+  border-top-style: solid;
+  border-left-width: 10px;
+  border-left-style: solid;
+  border-color: var(--main-color-secondary);
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 .header-text {
-    font-size: 3rem;
-    margin-bottom: 0px;
-    margin-top: 0px;
+  font-size: 3rem;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .label {
-    font-size: 1.5rem;
-    margin-bottom: 3px;
-    margin-top: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 3px;
+  margin-top: 12px;
 }
 
 .domain-addon {
-    background-color: #996448;
-    padding: 0 12px
+  background-color: var(--input-border-color);
+  padding: 0 12px;
 }
 
 .input-area {
-    margin-right: 15%;
-    margin-left: 15%;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
-.input-group{
+.input-group {
   display: table;
   border-collapse: collapse;
-  width:100%;
+  width: 100%;
 }
-.input-group > div{
+
+.input-group > div {
   display: table-cell;
-  vertical-align: middle;  /* needed for Safari */
+  vertical-align: middle; /* needed for Safari */
 }
-.input-group-icon{
-    background-color: #996448;
-  padding: 0 12px
+
+.input-group-icon {
+  background-color: var(--input-border-color);
+  padding: 0 12px;
 }
-.input-group-area{
-  width:100%;
+
+.input-group-area {
+  width: 100%;
 }
-.input-group input{
+
+.input-group input {
   display: block;
   width: 100%;
 }
 
 .submit-container {
-    align-content: center;
-    display: grid;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  align-content: center;
+  display: grid;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 button {
-    height: 40px;
-    background-color: #2fbf71;
-    color: var(--text-color);
-    border: #249456;
-    border-style: solid;
-    margin-right: -10px;
+  height: 40px;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  border: var(--main-color-secondary);
+  border-style: solid;
+  margin-right: -10px;
 }
 
 button:hover {
-    background-color: #4ad388;
-    border: #6BDB9E;
+  background-color: #4ad388;
+  border: #6bdb9e;
 }
 
 input {
-    width: 100%;
-    height: 35px;
-    border-color: #996448;
-    border-style: solid;
-    padding-left: 5px;
+  width: 100%;
+  height: 35px;
+  border-color: var(--input-border-color);
+  border-style: solid;
+  padding-left: 5px;
 }
 
 .notifications {
-    width: 40%;
-    margin: auto;
+  width: 40%;
+  margin: auto;
 }
 
 .notification-text {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .notification-success {
-    background-color: #2fbf71;
-    border-left-width: 10px;
-    border-left-style: solid;
-    border-color: #249456;
-    padding-left: 20px;
+  background-color: #2fbf71;
+  border-left-width: 10px;
+  border-left-style: solid;
+  border-color: #249456;
+  padding-left: 20px;
 }
 
 .notification-error {
-    background-color: #ff234f;
-    border-left-width: 10px;
-    border-left-style: solid;
-    border-color: #cc0028;
-    padding-left: 20px;
+  background-color: #ff234f;
+  border-left-width: 10px;
+  border-left-style: solid;
+  border-color: #cc0028;
+  padding-left: 20px;
 }
 
 hr {
-    color: var(--text-color);
-    margin-left: 10%;
-    margin-right: 10%;
+  color: var(--text-color);
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .error-header {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 0px;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0px;
 }
 
 .error-message {
-    text-align: center;
+  text-align: center;
 }
 
 .error-area {
-    border-top-width: 10px;
-    width: 40%;
-    background-color: #79523e;
-    margin: auto;
-    padding-left: 1%;
-    padding-right: 1%;
-    border-color: #6c4937;
-    border-bottom-width: 10px;
-    border-bottom-style: solid;
-    border-right-width: 10px;
-    border-right-style: solid;
-    border-left-width: 10px;
-    border-left-style: solid;
-    padding-top: 10px;
-    padding-bottom: 12px;
-    border-top-style: solid;
+  border-top-width: 10px;
+  width: 40%;
+  background-color: var(--window-bg-color);
+  margin: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-color: var(--window-border-color);
+  border-bottom-width: 10px;
+  border-bottom-style: solid;
+  border-right-width: 10px;
+  border-right-style: solid;
+  border-left-width: 10px;
+  border-left-style: solid;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  border-top-style: solid;
 }
