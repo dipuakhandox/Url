@@ -29,7 +29,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(helmet());
-app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/assets", express.static(path.join(__dirname, "public")));
+app.use("/", express.static(path.join(__dirname, "public/favicons")));
 app.use("/api/", api);
 
 app.get("/", (req, res) => {
