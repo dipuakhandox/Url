@@ -25,9 +25,11 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 app.use(helmet());
 app.use("/assets", express.static(path.join(__dirname, "public")));
 app.use("/", express.static(path.join(__dirname, "public/favicons")));
@@ -50,7 +52,10 @@ app.use("/:id?", async (req, res, next) => {
       next();
       if (url !== null) {
         console.log(url.url);
-        logger.log({level: "info", message: `Requested URL (${url.url}) from slug: ${querry.slug}`});
+        logger.log({
+          level: "info",
+          message: `Requested URL (${url.url}) from slug: ${querry.slug}`,
+        });
         return res.redirect(302, url.url);
       } else {
         error_handler.not_found(req, res, next);

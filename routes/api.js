@@ -1,6 +1,6 @@
 const express = require("express");
 const yup = require("yup");
-const logger = require("../middlewares/logger")
+const logger = require("../middlewares/logger");
 
 const router = express.Router();
 
@@ -42,7 +42,7 @@ var slug_insert = async function (req, res, next) {
       );
       logger.log({
         level: "info",
-        message: `New slug created: ${querry_to_post["slug"]} --> ${querry_to_post["url"]}`
+        message: `New slug created: ${querry_to_post["slug"]} --> ${querry_to_post["url"]}`,
       });
       req.querry_to_post = querry_to_post;
       next();
