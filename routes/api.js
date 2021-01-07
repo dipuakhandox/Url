@@ -1,6 +1,7 @@
 const express = require("express");
 const yup = require("yup");
 const logger = require("../middlewares/logger");
+const rate_limiter = require("../middlewares/rate_limiter");
 
 const router = express.Router();
 
@@ -57,7 +58,7 @@ var slug_insert = async function (req, res, next) {
 // A router for creating shortened urls
 router.post(
   "/shorten",
-  [slug_validator, slug_insert],
+  [rate_limiter.shortenLimiter, slug_validator, slug_insert],
   async (req, res, next) => {
     return res.json(req.querry_to_post);
   }
@@ -66,7 +67,7 @@ router.post(
 router
   .route("/total")
   // Checks all the shortened URLs and returns the total number of them.
-  .get(async (req, res, next) => {
+  .get(rate_limiter.apiLimiter, async (req, res, next) => {
     try {
       const total_num = await req.db.count();
       return res.json({ total: total_num });
@@ -75,7 +76,7 @@ router
     }
   })
   // Checks the number of a specific URL.
-  .post(async (req, res, next) => {
+  .post(rate_limiter.apiLimiter, async (req, res, next) => {
     try {
       const url_toCount = req.body["url"];
       if (url_toCount) {
@@ -89,7 +90,7 @@ router
     }
   });
 
-router.post("/shortened", async (req, res, next) => {
+router.post("/shortened", rate_limiter.apiLimiter, async (req, res, next) => {
   try {
     const url_toCount = req.body["url"];
     if (url_toCount) {
