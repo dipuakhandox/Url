@@ -38,4 +38,11 @@ function not_found(req, res, next) {
   });
 }
 
-module.exports = { generic, not_found };
+function rate_limiting(req, res, next) {
+  return res.status(429).render("error.pug", {
+    error_code: 429,
+    error_message: "Rate limit exceeded",
+  });
+}
+
+module.exports = { generic, not_found, rate_limiting };
