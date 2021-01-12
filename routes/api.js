@@ -2,6 +2,7 @@ const express = require("express");
 const yup = require("yup");
 const logger = require("../middlewares/logger");
 const rate_limiter = require("../middlewares/rate_limiter");
+const utils = require("../middlewares/utils");
 
 const router = express.Router();
 
@@ -12,6 +13,18 @@ const schema = yup.object().shape({
     .trim()
     .matches(/^[a-z0-9_]+(-[a-z0-9_]+)*$/i),
 });
+
+var random_slug = async function (req, res, next) {
+  const urls = req.db;
+  let generated_slug = "";
+  while (typeof req.body.slug == "undefined" || req.body.slug.trim() == "") {
+    generated_slug = utils.slug_generator();
+    if ((await urls.findOne({ slug: generated_slug })) == null) {
+      req.body.slug = generated_slug;
+    }
+  }
+  next();
+};
 
 var slug_validator = async function (req, res, next) {
   const valid_url = await schema.isValid({
@@ -58,7 +71,7 @@ var slug_insert = async function (req, res, next) {
 // A router for creating shortened urls
 router.post(
   "/shorten",
-  [rate_limiter.shortenLimiter, slug_validator, slug_insert],
+  [rate_limiter.shortenLimiter, random_slug, slug_validator, slug_insert],
   async (req, res, next) => {
     return res.json(req.querry_to_post);
   }
