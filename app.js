@@ -30,7 +30,11 @@ app.use(
     extended: true,
   })
 );
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use("/assets", express.static(path.join(__dirname, "public")));
 app.use("/", express.static(path.join(__dirname, "public/favicons")));
 app.use("/api/", api);
