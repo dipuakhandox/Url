@@ -3,18 +3,26 @@ head
   link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Baloo+2")
   link(rel="stylesheet", href="/assets/css/styles.css")
   title=title
-div.main-content
-  div.header
-    h1.header-text Shortify
-  div.form-area
-    form(action="/api/shorten", method="POST")
-      div.input-area
-        h3.label(style='margin-top: 0px;') Long URL:
-        input#url-input(type='text' name='url' placeholder='https://example.com/soooo-long')
-        h3.label(style='margin-top: 12px;') Slug (optional):
-        div.input-group
-          div.input-group-icon=website
-          div.input-group-area
-            input#slug-input(type='text' name='slug' placeholder='so-short')
-        div.submit-container
-          button(type='submit') Make it short!
+div#app
+  div.main-content
+    div.notifications
+      div.notification-success(v-if="seen")
+        p.notification-text Url successfully shortened! (Short Link: <a v-bind:href="'/' + prev_shorten[2]" target="_blank">#{ website }{{ prev_shorten[2] }}</a>)
+      div.notification-error(v-if="error !== ''")
+        p.notification-text Error ({{ error_code }}): {{ message }}
+    div.header
+      h1.header-text Shortify
+    div.form-area
+        div.input-area
+          h3.label(style='margin-top: 0px;') Long URL:
+          input#url-input(v-model="url" type='text' name='url' placeholder='https://example.com/soooo-long')
+          h3.label(style='margin-top: 12px;') Slug (optional):
+          div.input-group
+            div.input-group-icon=website
+            div.input-group-area
+              input#slug-input(v-model="slug" type='text' name='slug' placeholder='so-short')
+          div.submit-container
+            button(v-on:click="shorten") Make it short!
+
+script(src="https://vuejs.org/js/vue.min.js")
+script(src="/assets/js/index.js")
