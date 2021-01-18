@@ -11,6 +11,10 @@
   --input-border-color: #996448;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 body {
   background-color: var(--main-bg-color);
   color: var(--text-color);

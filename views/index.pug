@@ -5,7 +5,7 @@ head
   title=title
 div#app
   div.main-content
-    div.notifications
+    div.notifications(v-cloak)
       div.notification-success(v-if="seen")
         p.notification-text Url successfully shortened! (Short Link: <a v-bind:href="'/' + prev_shorten[2]" target="_blank">#{ website }{{ prev_shorten[2] }}</a>)
       div.notification-error(v-if="error !== ''")
