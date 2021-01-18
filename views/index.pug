@@ -6,9 +6,9 @@ head
 div#app
   div.main-content
     div.notifications(v-cloak)
-      div.notification-success(v-if="seen")
+      div.notification-success(v-if="seen" v-on:click="dismiss_notification")
         p.notification-text Url successfully shortened! (Short Link: <a v-bind:href="'/' + prev_shorten[2]" target="_blank">#{ website }{{ prev_shorten[2] }}</a>)
-      div.notification-error(v-if="error !== ''")
+      div.notification-error(v-if="error !== ''" v-on:click="dismiss_notification")
         p.notification-text Error ({{ error_code }}): {{ message }}
     div.header
       h1.header-text Shortify

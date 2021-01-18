@@ -22,6 +22,7 @@ const app = new Vue({
         if (!response.ok) {
           this.error = response.statusText;
           this.error_code = response.status;
+          this.seen = false;
           response.text().then((result) => {
             this.message = result;
           });
@@ -42,6 +43,10 @@ const app = new Vue({
       } catch (error) {
         this.message = error.message;
       }
+    },
+    dismiss_notification: function () {
+      this.seen = false;
+      this.error = "";
     },
   },
 });
