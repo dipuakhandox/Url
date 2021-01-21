@@ -7,7 +7,7 @@ const utils = require("../middlewares/utils");
 const router = express.Router();
 
 const schema = yup.object().shape({
-  url: yup.string().required().url().trim(),
+  url: yup.string().max(2000).required().url().trim(),
   slug: yup
     .string()
     .trim()
