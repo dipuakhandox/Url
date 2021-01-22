@@ -201,3 +201,22 @@ hr {
   border-top-style: solid;
   border-radius: 30px;
 }
+
+@media only screen and (max-width: 700px) {
+  .header {
+    width: 80%
+  }
+
+  .form-area {
+    width: 80%
+  }
+
+  .notifications {
+    width: 80%
+  }
+
+  .error-area {
+    width: 80%
+  }
+}
+
