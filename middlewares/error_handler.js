@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const production = process.env.NODE_ENV;
 
+// Everything that doesn't have it's own handler
 function generic(error, req, res, next) {
   try {
     logger.log({
@@ -31,6 +32,7 @@ function generic(error, req, res, next) {
   }
 }
 
+// 404 Not Found Error
 function not_found(req, res, next) {
   return res.status(404).render("error.pug", {
     error_code: 404,

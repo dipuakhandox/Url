@@ -14,7 +14,7 @@ const shortenSlowdown = slow_down({
   delayMs: 1000,
 });
 
-// 2 hour cooldown after every 30 api requests
+// 2 hour cooldown after every 30 API requests
 const apiLimiter = rate_limit({
   windowMs: 120 * 60 * 1000,
   max: 30,

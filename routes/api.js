@@ -14,8 +14,9 @@ const schema = yup.object().shape({
     .matches(/^[a-z0-9_]+(-[a-z0-9_]+)*$/i),
 });
 
+// Creates a random slug if there isn't a given one
 var random_slug = async function (req, res, next) {
-  const urls = req.db;
+  const urls = req.db; // Getting the DB connection
   let generated_slug = "";
   while (typeof req.body.slug == "undefined" || req.body.slug.trim() == "") {
     generated_slug = utils.slug_generator();
@@ -26,6 +27,7 @@ var random_slug = async function (req, res, next) {
   next();
 };
 
+// Validates the given slug and URL based on the previously defined schema
 var slug_validator = async function (req, res, next) {
   const valid_url = await schema.isValid({
     url: req.body.url,
@@ -35,6 +37,7 @@ var slug_validator = async function (req, res, next) {
   next();
 };
 
+// Pushes the new slug to the database
 var slug_insert = async function (req, res, next) {
   const urls = req.db;
   console.log(req.valid_url);
@@ -64,11 +67,12 @@ var slug_insert = async function (req, res, next) {
       return res.status(400).end("Slug isn't valid or already exists.");
     }
   } catch (error) {
+    // Catch other errors and pass it to the default error handler
     next(error);
   }
 };
 
-// A router for creating shortened urls
+// The router for creating shortened URLs
 router.post(
   "/shorten",
   [
@@ -85,7 +89,7 @@ router.post(
 
 router
   .route("/total")
-  // Checks all the shortened URLs and returns the total number of them.
+  // Checks all the shortened URLs and returns the total number of them
   .get(
     rate_limiter.apiSlowdown,
     rate_limiter.apiLimiter,
@@ -98,7 +102,7 @@ router
       }
     }
   )
-  // Checks the number of a specific URL.
+  // Returns the number of occurrences of the given URL
   .post(
     rate_limiter.apiSlowdown,
     rate_limiter.apiLimiter,
@@ -117,6 +121,7 @@ router
     }
   );
 
+// Return every slug that points to the given URL
 router.post(
   "/shortened",
   rate_limiter.apiSlowdown,

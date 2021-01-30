@@ -10,9 +10,11 @@ const app = express();
 
 require("dotenv").config();
 
-const db = monk(process.env.MONGO_URI);
 const port = process.env.PORT || 3000;
 const main_url = process.env.WEBSITE_DOMAIN;
+
+// Setting up the database connection
+const db = monk(process.env.MONGO_URI);
 const urls = db.get("shortened_urls");
 
 db.then(() => {
@@ -20,30 +22,45 @@ db.then(() => {
 });
 
 app.set("view engine", "pug");
+
+/* Saving the db connection to a request variable to use it
+elsewhere in the project */
 app.use((req, res, next) => {
   req.db = urls;
   next();
 });
+
 app.use(express.json());
 app.use(
   express.urlencoded({
     extended: true,
   })
 );
+
+// Some basic security
 app.use(
   helmet({
     contentSecurityPolicy: false,
   })
 );
+
+// The contents of the public folder is served under assets
 app.use("/assets", express.static(path.join(__dirname, "public")));
+
+// Making the favicon accessible on root level
+// Modern browsers load it automatically this way
 app.use("/", express.static(path.join(__dirname, "public/favicons")));
+
+// Declaring the API route
 app.use("/api/", api);
 
+// Index Page
 app.get("/", (req, res) => {
   const kaka = "kek.cx";
   res.render("index", { title: `Shortify | ${kaka}`, website: main_url });
 });
 
+// Slug Listener
 app.use("/:id?", async (req, res, next) => {
   var querry = {
     slug: req.params.id,
@@ -70,6 +87,7 @@ app.use("/:id?", async (req, res, next) => {
   }
 });
 
+// Main Error Handler
 app.use((error, req, res, next) => {
   error_handler.generic(error, req, res, next);
 });
