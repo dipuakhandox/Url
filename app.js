@@ -70,9 +70,17 @@ app.use("/:id?", async (req, res, next) => {
   } else {
     try {
       var url = await urls.findOne(querry);
-      next();
       if (url !== null) {
-        console.log(url.url);
+        var visits = url.visits;
+        if (url.visits == undefined) {
+          visits = 1;
+        } else {
+          visits++;
+        }
+        console.log(visits);
+        await urls.findOneAndUpdate(querry, {
+          $set: { visits: visits },
+        });
         logger.log({
           level: "info",
           message: `Requested URL (${url.url}) from slug: ${querry.slug}`,
