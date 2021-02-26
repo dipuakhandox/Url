@@ -70,6 +70,7 @@ app.use("/:id?", async (req, res, next) => {
     try {
       var url = await urls.findOne(querry);
       if (url !== null) {
+        // Visit Counter
         var visits = url.visits;
         if (url.visits == undefined) {
           visits = 1;
@@ -80,10 +81,14 @@ app.use("/:id?", async (req, res, next) => {
         await urls.findOneAndUpdate(querry, {
           $set: { visits: visits },
         });
+
+        // Log the request
         logger.log({
           level: "info",
           message: `Requested URL (${url.url}) from slug: ${querry.slug}`,
         });
+
+        // Redirect to the link
         return res.redirect(302, url.url);
       } else {
         error_handler.not_found(req, res, next);
