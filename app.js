@@ -56,8 +56,7 @@ app.use("/api/", api);
 
 // Index Page
 app.get("/", (req, res) => {
-  const kaka = "kek.cx";
-  res.render("index", { title: `Shortify | ${kaka}`, website: main_url });
+  res.render("index", { title: `Shortify`, website: main_url });
 });
 
 // Slug Listener
