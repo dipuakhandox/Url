@@ -52,6 +52,7 @@ var slug_insert = async function (req, res, next) {
       const querry_to_post = {
         url: req.body.url,
         slug: req.body.slug,
+        visits: 0,
       };
       await urls.insert(querry_to_post);
       console.log(
