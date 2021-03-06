@@ -1,0 +1,59 @@
+.dashboard-navbar {
+    border-top-width: 10px;
+    width: 70%;
+    background-color: #79523e;
+    margin: auto;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-color: #6c4937;
+    border-right-width: 10px;
+    border-right-style: solid;
+    border-left-width: 10px;
+    border-left-style: solid;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border-top-style: solid;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: 1.5%;
+}
+
+.dashboard-area {
+    border-top-width: 10px;
+    width: 70%;
+    background-color: #79523e;
+    margin: auto;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-color: #6c4937;
+    border-bottom-width: 10px;
+    border-bottom-style: solid;
+    border-right-width: 10px;
+    border-right-style: solid;
+    border-left-width: 10px;
+    border-left-style: solid;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.dashboard-tabs {
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.tab {
+    width: 150px;
+}
+
+.tab_active {
+    width: 150px;
+}
+
+.dashboard-header {
+  margin: auto;
+}
+
