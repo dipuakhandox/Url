@@ -58,35 +58,7 @@
 }
 
 .top-shortens {
-    border-collapse: collapse;
     width: 30%;
-}
-
-.top-shortens td, .top-shortens th {
-    border: 3px solid #bbb;
-}
-
-.top-shortens th {
-    background-color: var(--main-color);
-    border: 3px solid var(--main-color-secondary)
-}
-
-.top-shortens tr {
-    background-color: #ddd;
-}
-
-.top-shortens tr:nth-child(even) {
-    background-color: var(--text-color);
-}
-
-.top-shortens tr:hover {
-    background-color: #bbb;
-    border: 3px solid #bbb;
-}
-
-.top-shortens td {
-    color: black;
-    padding-left: 10px;
 }
 
 .top-shortens td:nth-child(even) {
