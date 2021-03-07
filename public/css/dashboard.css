@@ -1,20 +1,19 @@
 .dashboard-navbar {
     border-top-width: 10px;
-    width: 70%;
-    background-color: #79523e;
-    border-color: #6c4937;
+    width: 50%;
+    background-color: #825f4d;
     margin: 0 auto auto auto;
     padding: 10px 3% 12px 3%;
+    border-color: #6c5345;
     border-right-width: 10px;
     border-right-style: solid;
     border-left-width: 10px;
     border-left-style: solid;
-    border-top-style: solid;
 }
 
 .dashboard-area {
     border-top-width: 10px;
-    width: 70%;
+    width: 50%;
     background-color: #79523e;
     margin: auto;
     padding: 10px 3% 12px 3%;
@@ -48,7 +47,7 @@
 }
 
 .top-shortens {
-    width: 30%;
+    width: 50%;
 }
 
 .top-shortens td:nth-child(even) {
