@@ -85,8 +85,7 @@ td {
   width: 40%;
   background-color: var(--window-bg-color);
   margin: auto;
-  padding-left: 1%;
-  padding-right: 1%;
+  padding: 10px 1% 12px 1%;
   border-color: var(--window-border-color);
   border-bottom-width: 10px;
   border-bottom-style: solid;
@@ -94,8 +93,6 @@ td {
   border-right-style: solid;
   border-left-width: 10px;
   border-left-style: solid;
-  padding-top: 10px;
-  padding-bottom: 12px;
   border-radius: 0px 0px 30px 30px;
 }
 
