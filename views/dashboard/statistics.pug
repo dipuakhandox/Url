@@ -1,0 +1,42 @@
+extends layout.pug
+
+block content
+  div(style='display: flex;')
+    div(style='flex: 1;')
+      h1.area-header App Statistics:
+      hr.split-hr
+      h3 All shortens: 93
+      h3 Top 5 most visited shortens:
+      table.top-shortens
+        tr
+          th Slug
+          th Visits
+        tr
+          td kek
+          td 213
+        tr
+          td maka
+          td 32
+        tr
+          td kekkkk
+          td 12
+        tr
+          td lmaooo
+          td 11
+        tr
+          td html-shit
+          td 9
+    div(style='flex: 1;')
+      h1.area-header
+        | Server Statistics:
+        hr.split-hr
+        h3 CPU Usage: 23%
+        h3 RAM Usage: 0.83 Gb / 1 Gb (83%)
+        h3 System Uptime: 142H 34M
+        h3 Node.js version: 14.4.0
+  br
+  button(style='width: 100%;') Refresh
+  #last_refresh(style='text-align: center;')
+    b Last refresh:
+    |  2021. 03. 07. 12:37
+  br
