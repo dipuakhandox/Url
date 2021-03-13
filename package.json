@@ -4,8 +4,10 @@
   "description": "✂  A basic URL shortener under the 'gonda.dev' domain",
   "main": "app.js",
   "scripts": {
+    "start": "export NODE_ENV=production&& node app.js",
     "dev": "export NODE_ENV=development&& npx nodemon -L app.js",
-    "start": "node app.js"
+    "restart": "pm2 restart shortify",
+    "update": "git pull && npm install && npm run restart"
   },
   "keywords": [
     "shortener",
