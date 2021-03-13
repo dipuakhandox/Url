@@ -14,8 +14,12 @@
     "url-shortener",
     "short-url"
   ],
-  "author": "Bálint Gonda",
-  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Bálint Gonda",
+    "email": "balint@gonda.dev",
+    "url": "https://github.com/Balinteus"
+  },
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
