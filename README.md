@@ -35,9 +35,9 @@ $ git clone https://github.com/Balinteus/Shortify.git
 ```
 $ npm install
 ```
-4. Run the project.
+4. Run the project with the following command. If you don't have `pm2` installed, install it with `npm i -g pm2`.
 ```
-$ npm start
+$ pm2 start pm2.json
 ```
 5. You are done! 🎉
 
